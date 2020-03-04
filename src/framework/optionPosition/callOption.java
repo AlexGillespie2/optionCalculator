@@ -19,6 +19,26 @@ public class callOption implements option {
     private double averagePrice;
     private double breakEven;
     
+    /**
+     * Creates a callOption with given characteristics
+     * 
+     * 
+     * @param cIsLong describes if the option is a long or short position, true means long
+     * @param cTicker ticker symbol of the underlying stock
+     * @param cStrike is the strike price of the option
+     * @param cExpiration is the expiration date of the option
+     * @param cAveragePrice is the average price per share for the single contract
+     * @throws optionException is any of the parameters are invalid
+     */
+    public callOption(boolean cIsLong, String cTicker, double cStrike, String cExpiration, double cAveragePrice) {
+        isLong = cIsLong;
+        ticker = cTicker;
+        strike = cStrike;
+        expiration = cExpiration;
+        averagePrice = cAveragePrice;
+        breakEven = strike + averagePrice;
+    }
+    
     @Override
     public String toString() {
         return (ticker + " $" + strike + " call " + expiration);
