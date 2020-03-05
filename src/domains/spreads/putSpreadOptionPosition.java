@@ -102,9 +102,9 @@ public class putSpreadOptionPosition extends optionPosition {
     private String buildSpreadName() {
         String spreadName;
         if(isBearSpread) {
-            spreadName = (super.getTicker() + " " + super.getExpiration() + " +1 $" + longPut.getStrike() + " -1 $" + shortPut.getStrike() + " Bear Put Spread");
+            spreadName = (super.getTicker() + " " + super.getExpiration() + " +" + numOfContracts + " $" + longPut.getStrike() + " -" + numOfContracts + " $" + shortPut.getStrike() + " Bear Put Spread");
         } else {
-            spreadName = (super.getTicker() + " " + super.getExpiration() + " -1 $" + shortPut.getStrike() + " +1 $" + longPut.getStrike() + " Bull Put Spread");
+            spreadName = (super.getTicker() + " " + super.getExpiration() + " -" + numOfContracts + " $" + shortPut.getStrike() + " +" + numOfContracts + " $" + longPut.getStrike() + " Bull Put Spread");
         }
         return spreadName;
     }
