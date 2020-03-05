@@ -108,4 +108,9 @@ public class putSpreadOptionPosition extends optionPosition {
         }
         return spreadName;
     }
+    
+    @Override
+    public String toString() {
+        return buildSpreadName();
+    }
 }

@@ -31,12 +31,17 @@ public class callOption implements option {
      * @throws optionException is any of the parameters are invalid
      */
     public callOption(boolean cIsLong, String cTicker, double cStrike, String cExpiration, double cAveragePrice) {
-        isLong = cIsLong;
-        ticker = cTicker;
-        strike = cStrike;
-        expiration = cExpiration;
-        averagePrice = cAveragePrice;
-        breakEven = strike + averagePrice;
+        try {
+            isLong = cIsLong;
+            ticker = cTicker;
+            strike = cStrike;
+            expiration = cExpiration;
+            averagePrice = cAveragePrice;
+            breakEven = strike + averagePrice;
+        } catch(Exception e) {
+            throw new optionException(e.toString());
+        }
+        
     }
     
     @Override

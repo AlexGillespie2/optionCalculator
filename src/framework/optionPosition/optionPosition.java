@@ -21,7 +21,6 @@ public class optionPosition {
     private String expiration;
     private LineChart PLChart;
     
-
     
     public void setPLChart(LineChart chart) {
         PLChart = chart;

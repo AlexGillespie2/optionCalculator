@@ -31,6 +31,11 @@ public class OptionCalculatorApplication extends Application {
         tab1.setText("Put Spread");
         tab1.setContent(new OptionPositionCalculatorGUI(new putSpreadOptionPosition(new putOption(true, "SPCE", 21, "2/21/2020", 0.59), new putOption(false, "SPCE", 23, "2/21/2020", 1.35), 1)));
         tabPane.getTabs().add(tab1);
+        
+        Tab tab2 = new Tab();
+        tab2.setText("Call Spread");
+        tab2.setContent(new OptionPositionCalculatorGUI(new callSpreadOptionPosition(new callOption(true, "SPCE", 23, "2/21/2020", 0.5), new callOption(false, "SPCE", 21, "2/21/2020", 1.5), 1)));
+        tabPane.getTabs().add(tab2);
 
         
         Scene scene = new Scene(tabPane);
