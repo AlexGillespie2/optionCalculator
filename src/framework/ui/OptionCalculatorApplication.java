@@ -29,7 +29,7 @@ public class OptionCalculatorApplication extends Application {
         
         Tab tab1 = new Tab();
         tab1.setText("Put Spread");
-        tab1.setContent(new OptionPositionCalculatorGUI(new putSpreadOptionPosition(new putOption(true, "SPCE", 21, "2/21/2020", 0.59), new putOption(false, "SPCE", 23, "2/21/2020", 1.35))));
+        tab1.setContent(new OptionPositionCalculatorGUI(new putSpreadOptionPosition(new putOption(true, "SPCE", 21, "2/21/2020", 0.59), new putOption(false, "SPCE", 23, "2/21/2020", 1.35), 1)));
         tabPane.getTabs().add(tab1);
 
         

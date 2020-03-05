@@ -23,12 +23,14 @@ public class putSpreadOptionPosition extends optionPosition {
     private final double longDiffShortStrikes;
     private final double xMinVal;
     private final double xMaxVal;
+    private final int numOfContracts;
 
 
     
-    public putSpreadOptionPosition(putOption longPutInput, putOption shortPutInput) {
+    public putSpreadOptionPosition(putOption longPutInput, putOption shortPutInput, int numOfEachContract) {
         longPut = longPutInput;
         shortPut = shortPutInput;
+        numOfContracts = numOfEachContract;
         isBearSpread = longPut.getStrike() > shortPut.getStrike();
         totalCreditDebit = shortPut.getAveragePrice() - longPut.getAveragePrice();
         longDiffShortStrikes = longPut.getStrike() - shortPut.getStrike();
@@ -58,17 +60,17 @@ public class putSpreadOptionPosition extends optionPosition {
         
         
         if(isBearSpread) {
-            returnSeries.getData().add(new XYChart.Data(xMinVal-1, (longDiffShortStrikes + totalCreditDebit)));
-            returnSeries.getData().add(new XYChart.Data(shortPut.getStrike(), (longDiffShortStrikes + totalCreditDebit) ));
-            returnSeries.getData().add(new XYChart.Data(longPut.getStrike(), totalCreditDebit));
-            returnSeries.getData().add(new XYChart.Data(xMaxVal+1, totalCreditDebit));
+            returnSeries.getData().add(new XYChart.Data(xMinVal-1, 100 * numOfContracts * (longDiffShortStrikes + totalCreditDebit)));
+            returnSeries.getData().add(new XYChart.Data(shortPut.getStrike(), 100 * numOfContracts * (longDiffShortStrikes + totalCreditDebit) ));
+            returnSeries.getData().add(new XYChart.Data(longPut.getStrike(), 100 * numOfContracts * totalCreditDebit));
+            returnSeries.getData().add(new XYChart.Data(xMaxVal+1, 100 * numOfContracts * totalCreditDebit));
             returnSeries.setName(buildSpreadName());
             
         } else {
-            returnSeries.getData().add(new XYChart.Data(xMinVal-1, (longDiffShortStrikes + totalCreditDebit)));
-            returnSeries.getData().add(new XYChart.Data(longPut.getStrike(), (longDiffShortStrikes + totalCreditDebit) ));
-            returnSeries.getData().add(new XYChart.Data(shortPut.getStrike(), totalCreditDebit));
-            returnSeries.getData().add(new XYChart.Data(xMaxVal+1, totalCreditDebit));
+            returnSeries.getData().add(new XYChart.Data(xMinVal-1, 100 * numOfContracts * (longDiffShortStrikes + totalCreditDebit)));
+            returnSeries.getData().add(new XYChart.Data(longPut.getStrike(), 100 * numOfContracts * (longDiffShortStrikes + totalCreditDebit) ));
+            returnSeries.getData().add(new XYChart.Data(shortPut.getStrike(), 100 * numOfContracts * totalCreditDebit));
+            returnSeries.getData().add(new XYChart.Data(xMaxVal+1, 100 * numOfContracts * totalCreditDebit));
             returnSeries.setName(buildSpreadName());
         }
         
