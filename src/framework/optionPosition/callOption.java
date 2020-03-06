@@ -46,7 +46,8 @@ public class callOption implements option {
     
     @Override
     public String toString() {
-        return (ticker + " $" + strike + " call " + expiration);
+        String longOrShort = isLong ? " long "  : " short ";
+        return ("$" + ticker + " $" + strike + longOrShort + "call " + expiration + " expiration");
     }
     
     public void setIsLong(boolean isLongInput) {
