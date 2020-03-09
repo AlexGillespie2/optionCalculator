@@ -27,4 +27,9 @@ public class putOptionTest {
         assertTrue(shortPutOption.toString().equals("$TEST $20.0 short put 1/1/2000 expiration"));
     }
     
+    @Test
+    public void testBreakEven() {
+        assertTrue(longPutOption.getBreakEven() == 19.0);
+        assertTrue(shortPutOption.getBreakEven() == 19.0);
+    }
 }
