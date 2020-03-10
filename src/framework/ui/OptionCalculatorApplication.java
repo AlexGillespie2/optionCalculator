@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.Scene;
+import java.time.*;
 
 
 /**
@@ -29,12 +30,12 @@ public class OptionCalculatorApplication extends Application {
         
         Tab tab1 = new Tab();
         tab1.setText("Put Spread");
-        tab1.setContent(new OptionPositionCalculatorGUI(new putSpreadOptionPosition(new putOption(true, "SPCE", 21, "2/21/2020", 0.59), new putOption(false, "SPCE", 23, "2/21/2020", 1.35), 1)));
+        tab1.setContent(new OptionPositionCalculatorGUI(new putSpreadOptionPosition(new putOption(true, "SPCE", 21, LocalDate.of(2020,5,15), 0.59), new putOption(false, "SPCE", 23, LocalDate.of(2020,5,15), 1.35), 1)));
         tabPane.getTabs().add(tab1);
         
         Tab tab2 = new Tab();
         tab2.setText("Call Spread");
-        tab2.setContent(new OptionPositionCalculatorGUI(new callSpreadOptionPosition(new callOption(true, "SPCE", 23, "2/21/2020", 0.5), new callOption(false, "SPCE", 21, "2/21/2020", 1.5), 100)));
+        tab2.setContent(new OptionPositionCalculatorGUI(new callSpreadOptionPosition(new callOption(true, "SPCE", 23, LocalDate.of(2020,5,15), 0.5), new callOption(false, "SPCE", 21, LocalDate.of(2020,5,15), 1.5), 100)));
         tabPane.getTabs().add(tab2);
 
         
